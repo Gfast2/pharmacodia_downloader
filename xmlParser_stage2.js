@@ -1,5 +1,7 @@
 "use strict";
 
+// unfinished stage2 parser which filter the final infomation into csv like file
+
 const http = require("http");
 const fs   = require("fs");
 const xml2js = require('xml2js');

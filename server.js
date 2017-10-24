@@ -1,6 +1,6 @@
 "use strict";
 
-// Webpage Downloader from www& Dumpter 
+// Webpage Downloader from https://www.pharmacodia.com & Dumpter into file "./results.txt"
 
 const http = require("http");
 const fs   = require("fs");
@@ -9,15 +9,15 @@ const XMLHttpRequest  = require("xmlhttprequest").XMLHttpRequest;
 const server = http.createServer();
 const PORT   = 3000;
 
-let n = 30; // from 1 to 421; // page to starting with
+// from 1 to 421; // page to starting with.
+// Because the connection with the server breaks down sometimes.
+// So stop the programm,change this value to where it get stopped and start again
+let n = 30;
 
 const cb = (readyState, status, responseText) => {
   if(readyState===4 && status===200){ // Only in this state get hte correct payload from server
     console.log("Get response from server");
-    // console.log(status);
-    // console.log(readyState);
     console.log("Gotten Page Number:", n);
-    // console.log(responseText);
     // TODO: Process the payload, call the next recursion
     writeResults(responseText);
   }
@@ -46,28 +46,7 @@ const commitForECMA = (callback,num) => {
   const request = new XMLHttpRequest();
   request.onreadystatechange= () => callback(request.readyState, request.status, request.responseText);
 
-  /*
-   * If turned on, it will ignore the timeout feature
-   */
-//   // request.timeout = 1000;
-//   // request.ontimeout = () => {
-//   //   console.log('REQUEST TIMED OUT!!!');
-//   //   writeResults("MISSING PAGE:", n);
-//   // };
-
-//   const fromEle = ("http://app1.sfda.gov.cn/datasearcheng/face3/search.jsp?\
-// tableId=85&State=1&bcId=136489131226659132460942000667&State=1&curstart="
-//     + num +
-//     "&State=1&tableName=TABLE85&State=1&viewtitleName=COLUMN1040&State=1\
-// &viewsubTitleName=COLUMN1041,COLUMN1042,COLUMN1043,COLUMN1047&State=1&tableView=\
-// Database%20of%20approved%20Active%20Pharmaceutical%20Ingredients%20(APIs)%20and\
-// %20API%20manufacturers%20in%20China&State=1");
-
   const fromEle = "https://www.pharmacodia.com/web/drug/query";
-
-//   console.log("Waiting for page:", num);
-//   console.log();
-//   console.log(fromEle);
 
   request.open("POST",fromEle);
 
@@ -75,7 +54,8 @@ const commitForECMA = (callback,num) => {
   request.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
   
   // https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Sending_forms_through_JavaScript
-  const formData = "ns=1&page=" + num + "&size=80&records=2957&total=148&q.isq=true&q.field=highest_status&q.fieldShowName=Status&q.val=5&q.valShowName=Approved";
+  const formData = "ns=1&page=" + num + "&size=80&records=2957&total=148&q.isq=\
+    true&q.field=highest_status&q.fieldShowName=Status&q.val=5&q.valShowName=Approved";
 
   request.send(formData); // TODO: Here I add "form data" into function send()
 }
