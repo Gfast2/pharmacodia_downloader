@@ -1,0 +1,258 @@
+/**
+ * 绑定统计事件
+ * 
+ * category：事件类别，必填项，表示事件发生在谁身上，如“视频”、“小说”、“轮显层”等等。
+ * action:事件操作，必填项，表示访客跟元素交互的行为动作，如"播放"、"收藏"、"翻层"等等。
+ * label:事件标签，选填项，用于更详细的描述事件，从各个方面都可以，比如具体是哪个视频，哪部小说，翻到了第几层等等。
+ * 
+ * 
+ */
+var cnzzS = function(category,action,label) {
+	/**
+	 *  category：事件类别，必填项，表示事件发生在谁身上，如“视频”、“小说”、“轮显层”等等。
+	 *	action：事件操作，必填项，表示访客跟元素交互的行为动作，如"播放"、"收藏"、"翻层"等等。
+	 *	label：事件标签，选填项，用于更详细的描述事件，从各个方面都可以，比如具体是哪个视频，哪部小说，翻到了第几层等等。
+	 *	value：事件值，选填项，整数型，用于填写打分型事件的分值，加载时间型事件的时长，订单型事件的价格等等。
+	 *	nodeid：div元素id，选填项，填写网页中的div元素id值，用于在“用户视点”功能上重绘元素的事件发生情况。
+	 */
+	if(label){
+		label = label.trim();
+	}
+	_czc.push(['_trackEvent',category , action, label, '','']);
+	console.info(category+"==="+label);
+}
+
+
+$(function(){
+	/**************************************************【中文版】**********************************************************/
+	/******首页左侧导航栏cnzz统计*******/
+	//研发阶段访问统计+所有药物
+	$('.allDrugs .yd-content-left li:eq(0)').find('a').click(function(){
+		var text = $(this).text();
+		cnzzS('研发阶段访问统计','点击事件',text.replace('>>',''));
+	})
+	//药物类型
+	$('.allDrugs .yd-content-left li:eq(1)').find('a').click(function(){
+		var text = $(this).text();
+		cnzzS('药物类型访问统计','点击事件',text);
+	});
+	//适应症
+	$('.allDrugs .yd-content-left li:eq(2)').find('a').click(function(){
+		var text = $(this).text();
+		cnzzS('适应症访问统计','点击事件',text);
+	});
+	//作用靶点
+	$('.allDrugs .yd-content-left li:eq(3)').find('a').click(function(){
+		var text = $(this).text();
+		cnzzS('作用靶点访问统计','点击事件',text);
+	});
+	//上市年份
+	$('.allDrugs .yd-content-left li:eq(4)').find('a').click(function(){
+		var text = $(this).text();
+		cnzzS('上市年份统计','点击事件',text);
+	});
+	//上市国家和地区
+	$('.allDrugs .yd-content-left li:eq(5)').find('a').click(function(){
+		var text = $(this).text();
+		cnzzS('上市国家访问统计s','点击事件',text);
+	});
+	//研发公司访问统计
+	$('.allDrugs .yd-content-left li:eq(6)').find('a').click(function(){
+		var text = $(this).text();
+		cnzzS('研发公司访问统计','点击事件',text);
+	});
+	/******首页左侧导航栏cnzz统计*******/
+	//资讯访问统计
+     window.setTimeout(function(){
+    	 $('.newsContent .NewList').find('a:not(".biaoqian")').click(function(){
+	 		var html_ = $(this).html();
+	 		var text = html_.substring(0,html_.indexOf('<div'));
+	 		cnzzS('资讯访问统计','点击事件',text);
+	 	});
+     },500);
+	
+	//banner访问统计
+	$('#carousel-example-generic #banner div a').click(function(){
+		var text = $(this).children('img').attr('alt');
+		cnzzS('首页Banner统计','点击事件',text);
+	});
+	//药渡导航访问统计（首页）
+	$('#rememlxl div ul li a').click(function(){
+		var text = $(this).children('img').attr('title');
+		cnzzS('药渡导航统计','点击事件',text);
+	});
+	//药渡导航访问统计（列表页）
+	$('#XYYFQY_1.1LHXY li a').click(function(){
+		var text = $(this).text();
+		cnzzS('药渡导航统计','点击事件',text);
+	});
+	
+	//广告访问统计（首页）
+	$('div.Topbanner a').click(function(){
+		cnzzS('首页广告统计','点击事件',"广告1");
+	});
+	$('div.yd-guanggao:eq(0)').find('a:eq(0)').click(function(){
+		var ggVal = $(this).find('img:eq(0)').attr("alt");
+		cnzzS('首页广告统计','点击事件',ggVal);
+	});
+	$('div.yd-guanggao:eq(0)').find('a:eq(1)').click(function(){
+		var ggVal = $(this).find('img:eq(0)').attr("alt");
+		cnzzS('首页广告统计','点击事件',ggVal);
+	});
+	$('div.yd-guanggao:eq(1)').find('a:eq(0)').click(function(){
+		var ggVal = $(this).find('img:eq(0)').attr("alt");
+		cnzzS('首页广告统计','点击事件',ggVal);
+	});
+	$('div.yd-guanggao:eq(1)').find('a:eq(1)').click(function(){
+		var ggVal = $(this).find('img:eq(0)').attr("alt");
+		cnzzS('首页广告统计','点击事件',ggVal);
+	});
+	
+	//报告下载页：海报统计
+	$('.poster_con .leftbar ul').find('li').click(function(){
+		var text = $(this).find('span').text();
+		cnzzS('药物海报统计','点击事件',text);
+	});
+	/**************************************************【中文版】**********************************************************/
+	
+	
+	
+	
+	/**************************************************【英文版】**********************************************************/
+	/******首页左侧导航栏cnzz统计*******/
+	//研发阶段访问统计+所有药物
+	$('#search_nav_box ul li:eq(0)').find('a').click(function(){
+		var text = $(this).text();
+		cnzzS('研发阶段访问统计','点击事件',text.replace('>>',''));
+	})
+	
+	//药物类型
+	$('#search_nav_box ul li:eq(1)').find('a').click(function(){
+		var text = $(this).text();
+		cnzzS('药物类型访问统计','点击事件',text);
+	});
+	//治疗领域
+	$('#search_nav_box ul li:eq(2)').find('a').click(function(){
+		var text = $(this).text();
+		cnzzS('适应症访问统计','点击事件',text);
+	});
+	//作用靶点
+	$('#search_nav_box ul li:eq(3)').find('a').click(function(){
+		var text = $(this).text();
+		cnzzS('作用靶点访问统计','点击事件',text);
+	});
+	//上市年份
+	$('#search_nav_box ul li:eq(4)').find('a').click(function(){
+		var text = $(this).text();
+		cnzzS('上市年份统计','点击事件',text);
+	});
+	//上市国家和地区
+	$('#search_nav_box ul li:eq(5)').find('a').click(function(){
+		var text = $(this).text();
+		cnzzS('上市国家访问的统计','点击事件',text);
+	});
+	//研发公司访问统计
+	$('#search_nav_box ul li:eq(6)').find('a').click(function(){
+		var text = $(this).text();
+		cnzzS('研发公司访问统计','点击事件',text);
+	});
+	//首页资讯访问
+	window.setTimeout(function(){
+   	 $('.home-news .newsContent .NewLists').find('a:not(".biaoqian")').click(function(){
+	 		var text = $(this).parents('.col-xs-12').find('.newList').find('a.titleName').html();
+	 		cnzzS('资讯访问统计','点击事件',text);
+	 	});
+    },500);
+	//banner访问统计
+	$('#banner_pic .list-inline a').click(function(){
+		var text = $(this).children('img').attr('alt');
+		cnzzS('首页Banner统计','点击事件',text);
+	});
+	/**************************************************【英文版】**********************************************************/
+	
+	
+	
+	
+	/**************************************************【中英文公共部分】**********************************************************/
+	//专利下载统计_专利板块
+	window.setTimeout(function(){
+		$('#patentCN tr td a').click(function(){
+			var drugName = $('#drug_detail_drug_name').text();
+			var patentName = $(this).text();
+			
+			cnzzS('专利下载统计_专利板块',drugName,patentName);
+		});
+	},1000);
+
+	//专利下载统计_合成版块
+	window.setTimeout(function(){
+		$('#routes_content .border-t1 p a').click(function(){
+			var drugName = $('#drug_detail_drug_name').text();
+			var patentName = $(this).text();
+			
+			cnzzS('专利下载统计_合成版块',drugName,patentName);
+		});
+	},1000);
+	/*********************专利下载统计_合成版块*****************************/
+	
+    //资讯访问统计(列表页)
+    $('#tabs').find('.container-fuild').find('a:not(".biaoqian")').click(function(){
+		var text = $(this).parents('.container-fuild').find('.pull-right').find('.news-title').find('a').html();
+		cnzzS('资讯访问统计','点击事件',text);
+	 });
+    
+    //首页研发公司&&作用靶点列表页访问统计
+	$('#contrySecond').find('div:not(".all_product_title")').find('a').click(function(){
+		var companyOrTarget = $(this).parents('#contrySecond').find('>h2').text();
+		var category = '';
+		if(companyOrTarget.indexOf('靶点') != -1){
+			//靶点统计
+			category = '作用靶点访问统计';
+		}else{
+			//研发公司统计
+			category = '研发公司访问统计';
+		}
+		
+		var text = $(this).text();
+		
+		cnzzS(category,'点击事件',text.replace("•",""));
+	});
+	
+	//药品和样品关键词搜索(代码head_drug.js内)
+	
+	//药物访问统计
+	$('#cnzz_codiaVisit_statistic .col-xs-12').find('a:not(".font-sm")').click(function(){
+		var text = $(this).parents('.thumbnail').find('.good-title').find('a').html();
+		cnzzS('药物访问统计','点击事件',text);
+	});
+	
+	//样品访问统计
+	$('#table_id tbody tr').find('td:eq(1)').find('a').click(function(){
+		var text = $(this).html();
+		cnzzS('样品访问的统计','点击事件',text);
+	});
+	$('#table_id tbody tr').find('td:last').find('a').click(function(){
+		var text = $(this).parents('tr').find('td:eq(1)').find('a').text();
+		cnzzS('样品访问的统计','点击事件',text);
+	});
+	//中文版资讯详情页详情统计
+	$('#report_title').click(function(){
+		var text = $(this).text();
+		cnzzS('中文版详情页的详情统计','点击事件',text);
+	});
+	/**************************************************【中英文公共部分】**********************************************************/
+	
+	
+	
+	
+	
+	/**************************************百度统计**************************************************************/
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?94862393d9d328596f74c8041cc63933";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	/**************************************百度统计**************************************************************/
+});

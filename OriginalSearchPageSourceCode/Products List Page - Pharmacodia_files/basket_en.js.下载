@@ -1,0 +1,182 @@
+/*固定条购物车（英文）相关JS*/
+
+var ctx = path_;
+
+/**
+ * 获得购物车内物品数量
+ */
+function renderBasketNum(){
+	$.ajax({
+		url : ctx+"/web/basket/getBasketNum",
+		type : "post",
+		async : false,
+		data : {},
+		success:function(results){
+			if(results && results["isOk"] == true){
+				var count = results["count"];
+				return count;
+			}
+		}
+	});
+}
+
+/**
+ * 获得购物车数据
+ */
+function renderBasketInfo(){
+	 $.ajax({
+		url : ctx+"/web/basket/getBasket",
+		type : "post",
+		async : false,
+		data : {},
+		success:function(resultJSON){
+			if(resultJSON && resultJSON["isOk"] == true){
+				var _htmlItems = '';
+				var items = resultJSON.basketItems;
+				var hasQuantity = resultJSON.hasQuantity;//购物车是否有货物
+				var priceUnit = "";//币种单位
+				if(hasQuantity && hasQuantity == true){
+				//货物项
+			 	$.each(items,function(index,item){
+			 		var productName = (!item.productName) ? "" : item.productName;
+			 		var specification = (!item.specification) ? "" : item.specification;
+			 		var specificationUnit = (!item.specificationUnit) ? "" : item.specificationUnit;
+			 		var currentPriceUnitName = (!item.currentPriceUnitName) ? "" : item.currentPriceUnitName;
+			 		var currentPrice = (!item.currentPrice) ? "" : item.currentPrice;
+			 		var quantity = (!item.quantity) ? "" : item.quantity;
+			 		var sampleId = (!item.sampleId) ? "" : item.sampleId;
+			 		var basketId = (!item.basketId) ? "" : item.basketId;
+			 		var id = (!item.id) ? "" : item.id;
+			 		
+			 		_htmlItems+=
+			 			'<tr data_item_id="'+id+'" data_basket_id="'+basketId+'">'+
+				 			'<td class="name" style="text-align: left;"><a target="_blank" href="'+ctx+'/web/drug_sample/1_'+sampleId+'.html">'+productName+'</a></td>'+
+					 		'<td>'+specification+specificationUnit+'</td>'+
+					 		'<td>'+currentPriceUnitName+" "+currentPrice.toFixed(2)+'</td>'+
+					 		'<td>'+quantity+'</td>'+
+					 		'<td><a href="javascript:void(0)" rel="nofollow" name="deleteItem_">Delete</a></td>'+
+				 		'</tr>';
+			 		
+			 		priceUnit = currentPriceUnitName;
+			 	
+			 		
+			 	});
+
+			 	//购物车总价、总数量
+				var basketInfo = resultJSON.basket;
+				var productCount = (!basketInfo.productCount) ? "0" : basketInfo.productCount;
+				var totalPrice = (!basketInfo.totalPrice) ? "" : basketInfo.totalPrice;
+				
+				var url_goOrder = ctx+'/web/order_en/goOrder';
+				
+				var _htmlAll = '<div class="menu-top">'+
+							'<table id="BuyCarNum2" class="table table-condensed">'+
+								'<thead>'+
+									'<tr>'+
+										'<th width="120" class="t-name">Product Name</th>'+
+										'<th class="text-center" width="50">Size</th>'+
+										'<th class="text-center" width="90">Unit Price</th>'+
+										'<th class="text-center">Quantity</th>'+
+										'<th></th>'+
+									'</tr>'+
+								'</thead>'+
+								'<tbody>'+
+									_htmlItems+
+								'</tbody>'+
+							'</table>'+
+						'</div>'+
+						'<div class="menu-bottom">'+
+						'Total<span class="quantity" id="menu_quantity">'+productCount+'</span>products'+
+						'<span class="price" id="menu_price">'+priceUnit+totalPrice.toFixed(2)+'</span>'+
+							'<a target="_blank" href="'+url_goOrder+'" rel="nofollow">Checkout</a>'+
+						'</div>';
+					
+					$('#basket_box_data').html(_htmlAll);
+				}
+			}else{
+				//服务器错误
+				$('#basket_box').hide();
+				$('#basket_nodata_box').show();
+			}
+			
+			eventDeleteBasketItem();
+		}
+	 });
+}
+
+/**
+ * 删除购物车项
+ */
+function eventDeleteBasketItem(){
+	$("#BuyCarNum2 tbody td a[name='deleteItem_").click(function(){
+		var $this = $(this);
+		var itemId = $this.parents('tr').attr('data_item_id');
+		var basketId = $this.parents('tr').attr('data_basket_id');
+	    $.ajax({
+			url : ctx+"/web/basketItems/deleteItem",
+			type : "post",
+			async : false,
+			data : {"basketId":basketId,"itemId":itemId},
+			success:function(results){
+				if(results && results["isOk"] == true){
+					var _content = $this.parents('tr');
+					_content.remove();
+					$('.mini-cart').unbind();
+					renderBasketInfo();
+				}
+			}
+		});
+	});
+}
+
+$(function(){
+	encodeUserName2();
+	/*购物车收藏鼠标移入效果*/
+	$(document).on('mouseover','.mini-cart',function(){
+		var _this = $(this);
+		if($("#BuyCarNum2 tbody tr").length>0){
+			$(".menu .product-no").hide();
+			$(".menu .product-list").show();
+		}else{
+			$(".menu .product-list").hide();
+			$(".menu .product-no").show();
+		};
+//		_this.addClass('menu-hover');
+		_this.next('.line').css('opacity','0');
+	})
+	$(document).on('mouseout','.mini-cart',function(){
+//		$(this).removeClass('menu-hover');
+		$(".menu .menu-bd").hide();
+		$(this).next('.line').css('opacity','1');
+	})
+	//加载购物车数据
+	$(".mini-cart .home-byCar").mouseover(function(){
+		renderBasketInfo();
+	})
+});
+
+
+//格式化用户名
+function encodeUserName2(){
+	var name = $(".UserName").text();
+	if(typeof(name) != "undefined" && null != name && name){
+		/*if(name.length > 11){
+			$(".UserName").attr("title",name);
+			name = name.substring(0,11)+"...";
+		}
+		$(".UserName").text(name);*/
+		
+		$(".UserName").attr("title",name);
+		if(name.length>11){
+			var name1=name.substring(0,11)+'...';
+			$('.UserName').text(name1);
+		}
+	}
+}
+
+
+
+
+
+
+

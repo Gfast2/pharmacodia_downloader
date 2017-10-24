@@ -1,0 +1,288 @@
+var CPS = {
+	winSize:function(){
+	  var s = "";   
+      s += " 网页可见区域宽："+ document.body.clientWidth+"\n";    
+      s += " 网页可见区域高："+ document.body.clientHeight+"\n";    
+      s += " 网页可见区域宽："+ document.body.offsetWidth + " (包括边线和滚动条的宽)"+"\n";    
+      s += " 网页可见区域高："+ document.body.offsetHeight + " (包括边线的宽)"+"\n";    
+      s += " 网页正文全文宽："+ document.body.scrollWidth+"\n";    
+      s += " 网页正文全文高："+ document.body.scrollHeight+"\n";    
+      s += " 网页被卷去的高(ff)："+ document.body.scrollTop+"\n";    
+      s += " 网页被卷去的高(ie)："+ document.documentElement.scrollTop+"\n";    
+      s += " 网页被卷去的左："+ document.body.scrollLeft+"\n";    
+      s += " 网页正文部分上："+ window.screenTop+"\n";    
+      s += " 网页正文部分左："+ window.screenLeft+"\n";    
+      s += " 屏幕分辨率的高："+ window.screen.height+"\n";    
+      s += " 屏幕分辨率的宽："+ window.screen.width+"\n";    
+      s += " 屏幕可用工作区高度："+ window.screen.availHeight+"\n";    
+      s += " 屏幕可用工作区宽度："+ window.screen.availWidth+"\n";    
+      s += " 你的屏幕设置是 "+ window.screen.colorDepth +" 位彩色"+"\n";    
+      s += " 你的屏幕设置 "+ window.screen.deviceXDPI +" 像素/英寸"+"\n";    
+      alert (s);
+	},
+	isChildPage:function(){ if(window !== window.parent){ return true; }else{ return false;} },
+	/***CPS-function-base**************************************************/
+    //检查对象是否存在
+    isExistEle:function($ele){ if('undefined' != typeof($ele) && null!=$ele && typeof $ele == "object" && 0<$ele.length){ return true; }else{ return false; } },
+	//获取顶层dom(window.parent能获取一个框架的父窗口或父框架。顶层窗口的parent引用的是它本身.)
+	getRootDom:function(){ 
+		var m1 = window,m2; 
+		for(var i = 0;i<10;i=i+1){ 
+			m2 = m1.parent; 
+			if(m1==m2){ 
+				return m1; 
+			}else{
+				m1 = m2; 
+			} 
+		} 
+	},
+	
+	/***CPS-function-rgexp**************************************************/
+	//校验空值
+    isEmpty:function(obj){ if('undefined' == typeof(obj) || undefined == obj || null == obj || ""===obj){ return true; }else{ return false; } },
+    //校验boolean值
+    isBoolean:function(obj){ if(/true|false|'true'|'false'/.test(obj)){ return true; }else{ return false; } },
+    //校验值为true 或 'true'
+    eqTrue:function(obj){ if(/true|'true'/.test(obj)){ return true; }else{ return false; } },
+    //检验值为数组
+    isArray:function(obj){ return Object.prototype.toString.call(obj) === '[object Array]'; },
+	//校验是否全由数字组成 
+	isDigit:function(s) { if(/^[0-9]{1,20}$/.test(s)){ return true; }else{return false;} },
+	//校验登录名：只能输入5-20个以字母开头、可带数字、“_”、“.”的字串 
+	isRegisterUserName:function(s){ if( /^[a-zA-Z]{1}([a-zA-Z0-9]|[._]){4,19}$/.test(s)){ return true; }else{return false;} },
+	//校验用户姓名：只能输入1-30个以字母开头的字串 
+	isTrueName:function(s){ if( /^[a-zA-Z]{1,30}$/.test(s)){ return true; }else{return false;} },
+	//校验密码：只能输入6-20个字母、数字、下划线 
+	isPasswd:function(s){ if( /^(\w){6,20}$/.test(s)){ return true; }else{return false;}  },
+	//校验普通电话、传真号码：可以“+”开头，除数字外，可含有“-”
+	isTel:function(s){ if( /^[+]{0,1}(\d){1,3}[ ]?([-]?((\d)|[ ]){1,12})+$/.test(s)){ return true; }else{return false;}  },
+	//校验手机号码：必须以数字开头，除数字外，可含有“-” 
+	isMobil:function(s){ if( /^[+]{0,1}(\d){1,3}[ ]?([-]?((\d)|[ ]){1,12})+$/.test(s)){ return true; }else{return false;} },
+	//校验邮政编码 
+	isPostalCode:function(s){if( /^[a-zA-Z0-9 ]{3,12}$/.test(s)){ return true; }else{return false;} },
+	//验证IP
+	isIP:function(s){ if( /^[0-9.]{1,20}$/.test(s)){ return true; }else{return false;} },
+	
+	/***CPS-function-time**************************************************/
+	//获取日期对象
+	newDate:function(){ return new Date(); },
+	//获取完整的年份(4位,1970-????)
+	getFullYear:function(){ return CPS.newDate().getFullYear(); },
+	//获取正确的月份
+	getMonth:function(){ return CPS.newDate().getMonth()+1; },
+	//获取当前日(1-31)
+	getDate:function(){ return CPS.newDate().getDate();  },
+	//获取当前日期字符串
+	getLocaleDateString:function(){ return CPS.newDate().toLocaleDateString(); },
+	//获取当前时间字符串
+	getLocaleTimeString:function(){ return CPS.newDate().toLocaleTimeString(); },
+	//获取当前时间字符串精确到毫秒
+	getLocaleTimeMSString:function(){ var d = CPS.newDate(); return d.toLocaleTimeString()+":"+d.getMilliseconds(); },
+	//返回yyyy-MM-dd,agoNum(可设置前推agoNum个步长步长值)
+	getyyyy_mm_dd:function(newDate,agoNum){
+		var today = new Date();
+			  today.setFullYear(newDate.getFullYear(), newDate.getMonth(), newDate.getDate());
+			  today.setHours(newDate.getHours(), newDate.getMinutes(),newDate.getSeconds(),newDate.getMilliseconds());
+		if(!CPS.isEmpty(agoNum)){
+			today.setDate(today.getDate() - Number(agoNum));
+		}
+		var yyyy = today.getFullYear();
+		var mm = today.getMonth()+1; mm = (mm<10)?("0"+mm):mm;
+	    var dd = today.getDate();  dd = (dd<10)?("0"+dd):dd;
+		var yyyy_mm_dd = yyyy +"-"+ mm +"-"+dd;
+		return yyyy_mm_dd;
+	},
+	//返回yyyy-MM-dd,对应周日,agoNum(可设置前推agoNum个步长步长值)
+	getyyyy_mm_ww_sunday:function(newDate,agoNum){
+		var today = new Date();
+		  today.setFullYear(newDate.getFullYear(), newDate.getMonth(), newDate.getDate());
+		  today.setHours(newDate.getHours(), newDate.getMinutes(),newDate.getSeconds(),newDate.getMilliseconds());
+		var workDay = today.getDay()  //就是你要的星期几  0:日,1:一
+		      today.setDate(today.getDate() + Number(7-workDay)); //获取本周对应周日
+		var sunday = today;
+		if(!CPS.isEmpty(agoNum)){
+			sunday.setDate(sunday.getDate() - Number(7*agoNum));
+		}
+		var yyyy = sunday.getFullYear();
+		var mm = sunday.getMonth()+1; mm = (mm<10)?("0"+mm):mm;
+	    var dd = sunday.getDate();  dd = (dd<10)?("0"+dd):dd;
+		var yyyy_mm_ww_sunday = yyyy +"-"+ mm +"-"+dd;
+		return yyyy_mm_ww_sunday;
+	},
+	//
+	getyyyy_mm:function(newDate,agoNum){
+		var today = new Date();
+		  today.setFullYear(newDate.getFullYear(), newDate.getMonth(), newDate.getDate());
+		  today.setHours(newDate.getHours(), newDate.getMinutes(),newDate.getSeconds(),newDate.getMilliseconds());
+		if(!CPS.isEmpty(agoNum)){
+			today.setMonth(today.getMonth()-Number(agoNum), today.getDate());
+		}
+		var yyyy = today.getFullYear();
+		var mm = today.getMonth()+1; mm = (mm<10)?("0"+mm):mm;
+		var yyyy_mm = yyyy +"-"+ mm;
+		return yyyy_mm;
+	},
+	//
+	getyyyy:function(newDate,agoNum){
+		var today = new Date();
+		  today.setFullYear(newDate.getFullYear(), newDate.getMonth(), newDate.getDate());
+		  today.setHours(newDate.getHours(), newDate.getMinutes(),newDate.getSeconds(),newDate.getMilliseconds());
+		if(!CPS.isEmpty(agoNum)){
+			today.setFullYear(today.getFullYear()-Number(agoNum), today.getMonth(), today.getDate());
+		}
+		var yyyy = today.getFullYear();
+		return yyyy;
+	},
+	//返回yyyy-MM-dd hh,agoNum(可设置前推agoNum个步长步长值)
+	getyyyy_mm_dd_hh:function(newDate,agoNum){
+		var today = new Date();
+			  today.setFullYear(newDate.getFullYear(), newDate.getMonth(), newDate.getDate());
+			  today.setHours(newDate.getHours(), newDate.getMinutes(),newDate.getSeconds(),newDate.getMilliseconds());
+		if(!CPS.isEmpty(agoNum)){
+			today.setHours(today.getHours() - Number(agoNum));
+		}
+		var yyyy = today.getFullYear();
+		var mm = today.getMonth()+1; mm = (mm<10)?("0"+mm):mm;
+	    var dd = today.getDate();  dd = (dd<10)?("0"+dd):dd;
+	    var hh = today.getHours(); hh = (hh<10)?("0"+hh):hh;
+		var yyyy_mm_dd_hh = yyyy +"-"+ mm +"-"+dd + " "+hh;
+		return yyyy_mm_dd_hh;
+	},
+	//返回yyyy-MM-dd hh mm,agoNum(可设置前推agoNum个步长步长值)
+	getyyyy_mm_dd_hh_mm:function(newDate,agoNum){
+		var today = new Date();
+			  today.setFullYear(newDate.getFullYear(), newDate.getMonth(), newDate.getDate());
+			  today.setHours(newDate.getHours(), newDate.getMinutes(),newDate.getSeconds(),newDate.getMilliseconds());
+		if(!CPS.isEmpty(agoNum)){
+			today.setMinutes(today.getMinutes() - Number(agoNum));
+		}
+		var yyyy = today.getFullYear();
+		var mm = today.getMonth()+1; mm = (mm<10)?("0"+mm):mm;
+	    var dd = today.getDate();  dd = (dd<10)?("0"+dd):dd;
+	    var hh = today.getHours(); hh = (hh<10)?("0"+hh):hh;
+	    var mm_ = today.getMinutes(); mm_ = (mm_<10)?("0"+mm_):mm_;
+	    var yyyy_mm_dd_hh_mm = yyyy +"-"+ mm +"-"+dd + " "+hh +":"+mm_;
+		return yyyy_mm_dd_hh_mm;
+	},
+	//返回yyyy-MM-dd hh mm,agoNum(可设置前推agoNum个步长步长值)
+	getyyyy_mm_dd_hh_5m:function(newDate,agoNum){
+		var yyyy_mm_dd_hh_5m = CPS.getyyyy_mm_dd_hh_mm(newDate, 5*agoNum);
+		var yyyy = yyyy_mm_dd_hh_5m.substring(0,4);
+		var mm = yyyy_mm_dd_hh_5m.substring(5,7);
+		var dd = yyyy_mm_dd_hh_5m.substring(8,10);
+		var hour = yyyy_mm_dd_hh_5m.substring(11,13);
+		var minute = yyyy_mm_dd_hh_5m.substring(14,16);
+		var today = new Date(yyyy,Number(mm)-1,dd,Number(hour),Number(minute),0);
+		if(0!=Number(minute) && 0!=(Number(minute)%5)){
+			today.setMinutes(today.getMinutes() + (5-Number(minute)%5));
+		}
+		return CPS.getyyyy_mm_dd_hh_mm(today, 0);
+	},
+	/***CPS-function-FullScreen 进入全屏**************************************************/
+	requestFullScreen:function(element) {
+		if(CPS.isEmpty(element)){
+			element = document.documentElement;
+		}
+	    if (element.requestFullscreen) {
+	    	element.requestFullscreen();
+	    } else if (element.mozRequestFullScreen) {
+	    	element.mozRequestFullScreen();
+	    } else if (element.webkitRequestFullScreen) {
+	    	element.webkitRequestFullScreen();
+	    }else{
+	    	return false;
+	    }
+	    return true;
+	},
+	//退出全屏
+	exitFullscreen:function(element) {
+		if(CPS.isEmpty(element)){
+			element = document.documentElement;
+		}
+	    if (element.exitFullscreen) {
+	    	element.exitFullscreen();
+	    } else if (element.mozCancelFullScreen) {
+	    	element.mozCancelFullScreen();
+	    } else if (element.webkitCancelFullScreen) {
+	    	element.webkitCancelFullScreen();
+	    }else{
+	    	return false;
+	    }
+	    return true;
+	},
+	/***CPS-function-Loading **************************************************/
+	addLoading:function(box_id){
+		$("#"+box_id).html("<div class='loading'></div>");
+	},
+	hideLoading:function(box_id){
+		$("#"+box_id).find(".loading").hide();
+	},
+	fullForm:function(data,form,pre){
+		var temp="";
+		if(pre){
+			temp=pre+".";
+		}
+		$.each(data,function(n,v){
+		
+			var inp;
+			inp=$(form).find(" input[type='radio'][name='"+temp+n+"']");
+			if(inp.length){
+				inp.removeAttr('checked');
+				$(form).find(" input[type='radio'][name='"+temp+n+"'][value='"+v+"']").attr('checked','checked');
+				$(form).find(" input[type='radio'][name='"+temp+n+"'][value='"+v+"']").click();
+				return true;
+			}
+			
+			inp=$(form).find(" input[name='"+temp+n+"']");
+			if(inp.length){
+				inp.val(v);
+				return true;
+			}
+			
+			inp=$(form).find(" select[name='"+temp+n+"']");
+			if(inp.length){
+				inp.find("option").removeAttr('selected');
+				inp.find("option[value='"+v+"']").attr('selected','selected');
+				inp.val(v);
+				return true;
+			}
+			inp=$(form).find(" textarea[name='"+temp+n+"']");
+			if(inp.length){
+				inp.val(v);
+				inp.text(inp.val());
+				return true;
+			}
+		});
+	},
+	resetForm:function(form,pre){
+		/**
+		 // 当存在,非默认属性值 value ='123' 重置不了
+		var $cps_form_reset_but = $(form).find(" button[type='reset' ].cps_form_reset_but" );
+		if(null== $cps_form_reset_but || 1>$cps_form_reset_but.length){
+			$cps_form_reset_but = $("<button type='reset'  class='cps_form_reset_but'  >重置</button>").hide();
+			$(form).append($cps_form_reset_but);
+		}
+		$cps_form_reset_but.click();
+		***/
+		var temp="";
+		if(pre){
+			temp=pre+".";
+		}
+		
+		$(form).find(" input:text[name^='"+temp+"']").val("");  //removeAttr
+		$(form).find(" select[name^='"+temp+"'] option:selected").removeAttr('selected');
+		$(form).find(" textarea[name^='"+temp+"']").html("").val("").text("");
+	},
+	disabledForm:function(form){
+		$(form).find('input,select,textarea,button').each(function(i,n){
+			var t=$(n);
+			t.attr('disabled','disabled');
+		});
+	},
+	activeForm:function(form){
+		$(form).find('input,select,textarea,button').each(function(i,n){
+			var t=$(n);
+			t.removeAttr('disabled');
+		});
+	}
+};

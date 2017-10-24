@@ -1,0 +1,24 @@
+
+
+
+Hm_lpvt_94862393d9d328596f74c8041cc63933=1507464802; 
+OZ_SI_2797=sTime=1507455095&sIndex=121; 
+OZ_1U_2797=vid=v9d7d157c0ebb3.0&ctime=1507464809&ltime=1507464800; // -7 ; 2
+OZ_1Y_2797=erefer=-&eurl=https%3A//www.pharmacodia.com/web/drug/query&etime=1507456287&ctime=1507464809&ltime=1507464800&compid=2797
+
+---
+
+Hm_lpvt_94862393d9d328596f74c8041cc63933=1507464871; 
+OZ_SI_2797=sTime=1507455095&sIndex=129; 
+OZ_1U_2797=vid=v9d7d157c0ebb3.0&ctime=1507464982&ltime=1507464869; // -111 ; 2
+OZ_1Y_2797=erefer=-&eurl=https%3A//www.pharmacodia.com/web/drug/query&etime=1507456287&ctime=1507464982&ltime=1507464869&compid=2797
+
+---
+
+
+_gat=1; 
+
+Hm_lpvt_94862393d9d328596f74c8041cc63933=1507464821; //unix request time stampe?
+OZ_SI_2797=sTime=1507455095&sIndex=125; // first request unix time stampe of the day?
+OZ_1U_2797=vid=v9d7d157c0ebb3.0&ctime=1507464860&ltime=1507464817; // time difference between these two value from "Hm_lpvt_94862393d9d328596f74c8041cc63933" -39 ; 4
+OZ_1Y_2797=erefer=-&eurl=https%3A//www.pharmacodia.com/web/drug/query&etime=1507456287&ctime=1507464860&ltime=1507464817&compid=2797

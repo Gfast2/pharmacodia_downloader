@@ -1,0 +1,167 @@
+﻿/** 鎼滅储瀵艰埅 鏍峰紡 ========================================== begin **/
+.search_nav_facet{position: relative;width: 1000px;padding:0;height: auto;min-width: 1000px;font-size: 13px;margin-left:-15px;margin-right:-15px;}
+.search_nav_facet a::after{text-decoration: underline;}
+.search_nav_facet a::before{}
+.search_nav_facet ul{list-style:none;}
+.search_nav_facet ul li{line-height:24px;display:inline;border:1px solid #c5c5c5;overflow:hiddenl;width:auto;height:24px;float:left;padding-left:6px;cursor:pointer;}
+.search_nav_facet ul li i{display:inline-block;background:url("../../img/icons.png") no-repeat;}
+.search_nav_facet ul li i.dele{width:28px;height:22px;background-position:-30px -73px;float:left;margin-left:5px; }
+.search_nav_facet ul li span{float:left;color:#3d3d3d;max-width:300px;overflow:hidden;white-space: nowrap;text-overflow: ellipsis;}
+.search_nav_facet ul li span.text_val{color:#fa2424;white-space:nowrap;}
+.search_nav_facet ul li i.dele:hover{background-color:#fa2424;background-position: 10px -73px;}
+.search_nav_facet ul li:hover{border-color:#fa2424;}
+.search_nav_facet>.qs_box{
+  border-color: #d6d6d6;
+  border-image: none;
+  border-style: solid;
+  border-width: 0 0 1px;
+  padding: 8px 0;
+}
+
+.search_nav_facet>.qs_box>.col_1{display: inline-block;
+    float: left;
+    line-height: 32px;
+    padding-left: 15px;
+    width: 118px;}
+.search_nav_facet>.qs_box>.col_2{display: inline-block;width:880px;position:relative;}
+.search_nav_facet>.qs_box>.col_2 ul{list-style:none;float:left;margin:2px 0;padding:0 2px;}
+.search_nav_facet>.qs_box>.col_2 dl>dt{display: inline-block;margin: 2px 2px;width: auto;}
+.search_nav_facet>.qs_box>.col_2 dl>dd{display: inline-block;margin: 2px 2px;width: auto;}
+
+.search_nav_facet>.facets_box>.facet_box{border:1px solid #d6d6d6;border-width: 0px 0px 1px 0px;padding: 5px 0px;}
+.search_nav_facet>.facets_box>.facet_box .col_1{display: inline-block;width:118px;float: left;line-height:32px;padding-left: 15px;}
+.search_nav_facet>.facets_box>.facet_box .col_2{position: relative;padding-bottom:35px;display: inline-block;width:880px;border: 1px solid #d6d6d6;border-width: 1px 1px 1px 1px;}
+.search_nav_facet>.facets_box>.facet_box .col_2>.val_box{display: inline-block;width:700px;float: left;overflow-y:auto;padding:5px 5px 5px 0px;box-sizing:border-box;max-height:150px;}
+.search_nav_facet>.facets_box>.facet_box .col_2>.val_box span{display: inline-block;margin: 2px 20px 2px 5px;width: auto;color: #3991f2;cursor: pointer;}
+.search_nav_facet>.facets_box>.facet_box .col_2.change_more_box>.val_box span i.icon_{
+	border: 0px solid #ddd;width: 17px;height:17px;
+	margin-left: 3px; top:-1px;
+	display:inline-block;
+	vertical-align:middle;
+	background:url("../../img/red.png") no-repeat; background-position: 0 2px;
+}
+/**瀹瑰櫒鏍囪涓哄閫�鏍峰紡**/
+.search_nav_facet>.facets_box>.facet_box .col_2.change_more_box .val_box span:hover i.icon_{
+	background-position: -20px 2px;
+}
+.search_nav_facet>.facets_box>.facet_box .col_2.change_more_box .val_box span.selectd i.icon_{
+	background-position: -38px 2px;
+}
+/**闅愯棌涓�儴鍒�*/
+.search_nav_facet>.facets_box>.facet_box.hide_part{}
+.search_nav_facet>.facets_box>.facet_box .col_2.hide_part{padding-bottom: 0px;border-width: 0px;height: 32px;overflow: hidden;}
+.search_nav_facet>.facets_box>.facet_box .col_2.hide_part>.val_box{overflow: hidden;}
+.search_nav_facet>.facets_box>.facet_box .col_2.hide_part>.do_box_bottom{display: none;}
+
+/** 鎼滅储瀵艰埅 鏍峰紡 ========================================== end **/
+.search_nav_facet .do_box{ display: inline-block;padding: 5px 0;position: absolute;right: 0;text-align: right;width: 175px;}
+.search_nav_facet .do_box_top a:focus{outline:none;}
+/**灞曞紑銆佹敹璧锋寜閽�*/
+.search_nav_facet .do_box_top a{margin: 0px 10px 0px 0px;}
+.search_nav_facet .do_box_top a.show_or_hide{color:#3d3d3d;text-decoration:none;vertical-align:middle;}
+/**灞曞紑銆佹敹璧锋寜閽�褰撳墠鏄睍寮�垯灞曞紑闅愯棌,榛樿鏄敹璧风殑,鍔�hide **/
+.search_nav_facet .do_box_top a.show_or_hide.hide_,
+.search_nav_facet .do_box_top a.show_or_hide.show_{display: inline-block;}
+.search_nav_facet .do_box_top a.show_or_hide.hide_ .hide_but{display: none;}
+.search_nav_facet .do_box_top a.show_or_hide.show_ .show_but{display: none;}
+/**灞曞紑銆佹敹璧锋寜閽�璁剧疆鍥剧墖榛樿鏍峰紡**/
+.search_nav_facet .do_box_top a.show_or_hide .hide_but>i.icon_,
+.search_nav_facet .do_box_top a.show_or_hide .show_but>i.icon_{
+	background:url("../../img/icons.png") no-repeat; background-position: -78px -75px;
+	border: 1px solid #ddd;height: 18px;
+	margin-left: 3px; top:-1px;
+	width: 17px;display:inline-block;
+	vertical-align:middle;
+}
+/**灞曞紑銆佹敹璧锋寜閽�鏀惰捣鎸夐挳璁剧疆涓虹孩鑹�*/
+.search_nav_facet .do_box_top a.show_or_hide .hide_but{color:#fa2424; }
+.search_nav_facet .do_box_top a.show_or_hide .hide_but>i.icon_{background-position: -138px -75px;color:#fa2424;border-color:#fa2424;}
+/**灞曞紑銆佹敹璧锋寜閽�灞曞紑娴姩:鍙樼孩**/
+.search_nav_facet .do_box_top a.show_or_hide:hover .show_but{color:#fa2424;}
+.search_nav_facet .do_box_top a.show_or_hide:hover .show_but>i.icon_{border-color:#fa2424;background-position: -98px -75px;}
+/**澶氶�鎸夐挳**/
+.search_nav_facet .do_box_top a.change_more{color:#3d3d3d;text-decoration:none;vertical-align:middle;}
+.search_nav_facet .do_box_top a.change_more{ border: 1px solid #ddd;display: inline-block;padding-right: 3px;vertical-align:middle;}
+.search_nav_facet .do_box_top a.change_more:hover{color:#fa2424;border-color:#fa2424;}
+.search_nav_facet .do_box_top a.change_more i.more_add{background:url("../../img/icons.png") no-repeat; background-position: -160px -80px; height: 15px;margin-left: 3px;width: 18px;display:inline-block;vertical-align:middle;}
+.search_nav_facet .do_box_top a.change_more:hover i.more_add{background-position: -200px -80px;}
+.search_nav_facet .do_box_top a.change_more.selectd i.more_add{background-position: -200px -80px;}
+.search_nav_facet .do_box_top a.change_more.selectd {background-position: -138px -75px;color:#fa2424;border-color:#fa2424;}
+.search_nav_facet .do_box_top a.change_more.selectd i.more_add{background-position:-200px -80px }
+
+.search_nav_facet .do_box_bottom{bottom: 0;position: absolute;right: 0; text-align: right;}
+.search_nav_facet .do_box_bottom_hide{display:none; }
+.search_nav_facet .do_box_bottom>a.btn-smaller{text-decoration:none;border: 1px solid #c5c5c5;color: #3d3d3d;display: inline-block;height: 21px;line-height: 21px;margin-right: 10px;padding: 0 10px;text-align: center;float: none;}
+.search_nav_facet .do_box_bottom>a.btn-smaller:hover{background-color:#f12424;color:#fff;border-color:#f12424}
+
+
+.search_nav_facet .tools_box{background: #f2f2f2;height:50px;margin-top:8px;line-height:50px;padding:0 15px;}
+.search_nav_facet .sorts_box{float:left;}
+.search_nav_facet .pager_box_span{float:right;min-width:420px;min-width:470px\9;text-align:right;}
+.search_nav_facet .sorts_box span.order_item {line-height:21px;height:21px;border:1px solid #c5c5c5;padding:0 10px;cursor:pointer;display:inline-block;}
+.search_nav_facet .sorts_box span.order_item_asc i.icon_,.sorts_box span.order_item_desc i.icon_{width:12px;height:15px;background:url("../../img/icons.png") no-repeat;display:inline-block;background-position:0 -119px;diplay:inline-block;vertical-align:middle;margin-left:3px;}
+.search_nav_facet .sorts_box span.order_item_asc,.sorts_box span.order_item_desc,.sorts_box span.order_item:hover{ background-color: #fa2424;
+    border: 1px solid #fa2424!important;
+    color: #fff;}
+.search_nav_facet .sorts_box span.order_item_desc i.icon_{background-position:-40px -119px}
+.search_nav_facet .pager_box_span select{min-width:50px;}
+.search_nav_facet .pager_records_tip{color:#fa2424;margin:0 20px;}
+.search_nav_facet .view_model_but_box{margin-right:20px;}
+.search_nav_facet .view_model_but_box i.icon-square,.view_model_but_box i.icon-list{
+	cursor:pointer;
+	vertical-align:middle;
+	margin-top:-3px;
+    height: 18px;
+    width: 26px;display:inline-block;background:url("../../img/icons.png") no-repeat; background-position: -80px -120px;}
+.search_nav_facet .view_model_but_box i.icon-square.current_{background-position:-120px -120px}  
+.search_nav_facet .view_model_but_box i.icon-list{background-position:-160px -120px;}   
+.search_nav_facet .view_model_but_box i.icon-list.current_{background-position:-200px -120px;}   
+.search_nav_facet .pageset_but_box .btn{ border-radius: 3px;
+    font-size: 12px;
+    line-height: 1.5;
+    padding: 1px 5px;color:#333;border:1px solid #ccc;background:#fff;cursor:pointer;}    
+ .search_nav_facet .pageset_but_box .disabled{ box-shadow: none;
+    cursor: not-allowed;
+    opacity: 0.65;
+    pointer-events: none;}
+ .search_nav_facet .pageset_but_box .btn:hover{border-color:#adadad;color:#333;}
+.search_nav_facet label{font-weight:normal;}
+
+.tooltip-inner {
+	text-align:left;
+    line-height:18px;
+   word-break:break-word;  word-wrap:break-word;
+}
+.val_box .tooltip-inner{
+	white-space: nowrap!important;
+	max-width:400px;
+}
+/** 其他选项 =================================== beign **/
+/**提高名称显示层级,面板选项左对齐**/
+#facet_box_others{border-bottom:1px solid #d6d6d6;}
+#facet_box_others>.col_1{position: relative;z-index: 2;}
+#facet_box_others>.col_2{position: absolute;left: 0;width: 100%;}
+/**修改tabs样式,工具条背景用整个面板控制,避免修改js逻辑代码**/
+#tabs_other{position: relative;margin: 0px;padding: 0px;top:-32px;border: 0px;background: #FFF;}
+#tabs_other>.ui-tabs-nav{z-index:4;position:relative;margin-left: 118px;padding-top:0px;background: #FFF;border: 0px;}
+#tabs_other>.ui-tabs-nav>li{padding: 0px 5px 0px 0px;border: 1px solid #d6d6d6;position: relative;top:1px;cursor: pointer;
+		background:#FFF;}
+#tabs_other>.ui-tabs-nav>li>a{padding: 0px 20px 0px 5px;cursor: pointer;height:22px;line-height:22px;
+	background: #fff url("../../img/down_arrow.png") no-repeat scroll right;}
+#tabs_other>.ui-tabs-nav>li.ui-state-active>a{background-image: url("../../img/up_arrow.png");}
+	
+#tabs_other>.ui-tabs-panel{z-index: 2;display: block;position: absolute;
+					margin: 0px;padding: 0px;width:100%;border: 1px solid #d6d6d6;
+					background: #fff none repeat scroll 0 0;}
+#tabs_other .ui-state-default, 
+#tabs_other .ui-widget-content .ui-state-default, 
+#tabs_other .ui-widget-header .ui-state-default{
+	background-color: #fff;
+}
+#tabs_other>.ui-tabs-nav>li.ui-state-active{border-bottom-color:#FFF; }
+/**重新查询条件样式**/
+#tabs_other .col_2{width: 100%;height: auto;text-align: center;border: none;}
+#tabs_other .col_2>.val_box{width:820px;background-color: #fff;text-align: left;}
+#tabs_other .col_2>.do_box .show_or_hide.hide_{display: none;}
+#tabs_other .col_2>.do_box .show_or_hide.show_{display: none;}
+/** 其他选项 =================================== end **/

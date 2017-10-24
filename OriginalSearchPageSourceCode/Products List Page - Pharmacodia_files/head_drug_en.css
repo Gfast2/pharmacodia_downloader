@@ -1,0 +1,43 @@
+			/**导航 底部18px **/
+			.homeNav{margin-bottom: 18px;}
+ 			/** 搜索样式 被 原home 样式顶掉了 **/
+    		.tableChange div{position: relative;}
+    		/**banner**/
+    		/***
+    		.banner-in img{width: 400px;height: 100px;}
+    		**/
+			body {
+			    color: #333;
+			    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+			    font-size: 12px;
+			    line-height: 1.42857;
+			}
+			*{
+				font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+			}
+    		#smaples{width: 136px;}
+    		/*头部*/
+    		.nav-title{margin-left:15px;}
+    		/* .yd-content-left{width:220px;} */
+    		.homeNav .allDrugs{width:210px;}
+    		.yd-search-wrap{width:738px;}
+    		.search-bottom .InputBox{width:537px;}
+    		.search-bottom a.yd-jgs{position:absolute;right:0;}
+    		.search-bottom a.yd-jgs{margin-top:2px;}
+    		.yd-search-wrap{margin-left:35px;}
+    		.navbars{margin-bottom:30px;}
+    		.search-bottom a.yd-jgs{font-size:12px;}
+    		.homeNav{margin-top:28px;}
+    		.ydwrap-fixed .search-bottom .InputBox{width:545px;}
+    		.ydwrap-fixed .search-bottom .InputBox input{margin-left:140px;}
+    		.ydwrap-fixed .yd-search-wrap .tableChange,#smaples{width:140px;}
+    		.tableChange div{width:130px;}
+    		.ydwrap-fixed .tableChange div{width:140px;}
+    		.navbar-fixed{z-index:100;}
+    		/*左侧菜单栏8/
+    		.yd-content-left li .cathook-bd{z-index:50;}
+    		.title-news1{width:220px;}
+    		.sampleBuy{width:220px;padding:12px 0 0 15px;}
+    		.downLoadBox_ho{width:220px;border:1px solid #e8eae9;}
+    		/*搜索框宽度*/
+    		.ydwrap-fixed .search-bottom .InputBox input{width: 420px;}

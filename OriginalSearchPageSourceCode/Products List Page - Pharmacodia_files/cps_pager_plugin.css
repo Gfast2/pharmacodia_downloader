@@ -1,0 +1,17 @@
+/** 分页样式 ========================================== begin **/
+.cps_pager_box{text-align:right;}
+.cps_pager_box .col_1 a{display:inline-block;padding:3px 8px;border:1px solid #cfcfcf;color:#666;text-decoration:none;border-radius:3px;}
+.cps_pager_box .col_1 a.current_{background-color: #1586ff;
+    border-color: #1586ff;color:#fff;}
+    .cps_pager_box .col_1 a.disabled{cursor: not-allowed;
+    opacity: 0.65;}
+    .cps_pager_box>.col_2>.item_2{margin-left:15px;}
+.cps_pager_box>.col_2>.item_2 input{width:40px;margin:0 5px;padding:0 5px;}
+ .cps_pager_box>.col_2 a{ color: #fff;
+    display: inline-block;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    width: 31px;background-color: #1586ff;display:inline-block;cursor:pointer;}
+
+/** 分页样式 ========================================== begin **/

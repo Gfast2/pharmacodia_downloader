@@ -1,0 +1,131 @@
+PC@Wasser MINGW64 ~/Desktop/QF_pharmacodia
+$ node server
+Server started on port  3000
+Get response from server
+Gotten Page Number: 1
+start to asking the next one.
+Get response from server
+Gotten Page Number: 2
+start to asking the next one.
+Get response from server
+Gotten Page Number: 3
+start to asking the next one.
+Get response from server
+Gotten Page Number: 4
+start to asking the next one.
+Get response from server
+Gotten Page Number: 5
+start to asking the next one.
+Get response from server
+Gotten Page Number: 6
+start to asking the next one.
+Get response from server
+Gotten Page Number: 7
+start to asking the next one.
+Get response from server
+Gotten Page Number: 8
+start to asking the next one.
+Get response from server
+Gotten Page Number: 9
+start to asking the next one.
+Get response from server
+Gotten Page Number: 10
+start to asking the next one.
+Get response from server
+Gotten Page Number: 11
+start to asking the next one.
+
+PC@Wasser MINGW64 ~/Desktop/QF_pharmacodia
+$ node server
+Server started on port  3000
+
+PC@Wasser MINGW64 ~/Desktop/QF_pharmacodia
+$ node server
+Server started on port  3000
+Get response from server
+Gotten Page Number: 12
+start to asking the next one.
+Get response from server
+Gotten Page Number: 13
+start to asking the next one.
+Get response from server
+Gotten Page Number: 14
+start to asking the next one.
+Get response from server
+Gotten Page Number: 15
+start to asking the next one.
+Get response from server
+Gotten Page Number: 16
+start to asking the next one.
+Get response from server
+Gotten Page Number: 17
+start to asking the next one.
+Get response from server
+Gotten Page Number: 18
+start to asking the next one.
+Get response from server
+Gotten Page Number: 19
+start to asking the next one.
+Get response from server
+Gotten Page Number: 20
+start to asking the next one.
+Get response from server
+Gotten Page Number: 21
+start to asking the next one.
+Get response from server
+Gotten Page Number: 22
+start to asking the next one.
+Get response from server
+Gotten Page Number: 23
+start to asking the next one.
+
+PC@Wasser MINGW64 ~/Desktop/QF_pharmacodia
+$ node server
+Server started on port  3000
+Get response from server
+Gotten Page Number: 24
+start to asking the next one.
+Get response from server
+Gotten Page Number: 25
+start to asking the next one.
+Get response from server
+Gotten Page Number: 26
+start to asking the next one.
+Get response from server
+Gotten Page Number: 27
+start to asking the next one.
+Get response from server
+Gotten Page Number: 28
+start to asking the next one.
+Get response from server
+Gotten Page Number: 29
+start to asking the next one.
+
+PC@Wasser MINGW64 ~/Desktop/QF_pharmacodia
+$ node server
+Server started on port  3000
+Get response from server
+Gotten Page Number: 30
+start to asking the next one.
+Get response from server
+Gotten Page Number: 31
+start to asking the next one.
+Get response from server
+Gotten Page Number: 32
+start to asking the next one.
+Get response from server
+Gotten Page Number: 33
+start to asking the next one.
+Get response from server
+Gotten Page Number: 34
+start to asking the next one.
+Get response from server
+Gotten Page Number: 35
+start to asking the next one.
+Get response from server
+Gotten Page Number: 36
+start to asking the next one.
+Get response from server
+Gotten Page Number: 37
+start to asking the next one.
+Finish

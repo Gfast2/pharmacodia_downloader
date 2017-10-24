@@ -1,0 +1,39 @@
+//// AS IS ////
+
+/ SEARCH_NAV_FACET.toPage(6)
+Will navigate me to search result page 6
+    - This function will call "searchFormSetPager()" to set page number and size of each page
+    - Then call "searchFormSubmit()" to do the submit
+
+/ "cnzz_codiaVisit_statistic"
+is the id name of the search result block
+
+/ https://www.pharmacodia.com/web/drug/q_1_5.html
+is the search start page for all "approved" drugs
+
+/ There is:
+2957 approved drugs & there is 148 pages of search results & each page have 20 results
+
+/ https://www.pharmacodia.com/web/drug/query
+is the same search page link for approved drug searching
+
+/ <script src="https://rs.pharmacodia.com/yaodu/resources/js/newhome/newhead_drug.js?v=1.9.4" type="text/javascript"></script>
+Is that something about query resources?
+
+-----------------------------------
+
+//// TODO ////
+
+1. fire up a nodejs programm                                                            €€
+
+2. nodejs programm that query stuff from a random website
+
+3. save the result from web and write it down to some local text file
+
+4. figure out how the "SEARCH_NAV_FACET.toPage(6)" works, bind this programm part into nodejs server
+
+5. query all 148 pages with 2957 drugs in it and write them all down into a text file
+
+6. try to parse all written down infomations
+
+7. try to output all stuffs into csv format: "WirkungsstoffNamen,produktName1:produktName2:produktName3,CASNr1:CASNr2:CASNr3"

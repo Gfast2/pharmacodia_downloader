@@ -1,0 +1,26 @@
+/*初*/
+body{
+	font-size: 12px;
+	font-family:'Microsoft YaHei',"微软雅黑";
+	color: #666;
+}
+a:link,a:hover,a:visited,a:active{
+	text-decoration: none;
+}
+a:focus{
+	outline:none;
+}
+ul,ol{
+	margin-bottom:0px;
+}
+.auto{
+	margin:0 auto;
+}
+input,a{
+	outline: none;
+}
+.container{width: 1170px;padding:0;}
+.auto{margin:0 auto;}
+.Icons{cursor: pointer;display: inline-block;width: 10px;height:14px;background: url(../img/logo_002.png) no-repeat;vertical-align: middle;}
+ul,ol{list-style: none;}
+a:hover{color: #1c72c8;}

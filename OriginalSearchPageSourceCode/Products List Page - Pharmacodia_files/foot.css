@@ -1,0 +1,32 @@
+.yd-foot-outer{width: 100%;background: #ECECEC;}
+.yd-foot-inner .yd-service ul{padding:0;}
+.yd-clr>li.group-item{float: left;width: 150px;margin-right: 30px;}
+.yd-clr>li.group-last{width: 85px;}
+.yd-clr>li.line{float: left;width: 0px;height: 170px;border-right: 1px solid #DDDDDD;margin-top: 20px;}
+.yd-clr>li.group-item>h2{font-size: 14px;color: #333333;line-height: 28px;text-align: left;}
+.yd-clr>li.group-item>ul>li{line-height: 26px;text-align: left;}
+.yd-clr>li.group-item>ul>li a{font-size: 12px;color:#666666 ;}
+.yd-clr>li.group-item>ul>li a:hover{color: #1c72c8;}
+.yd-clr>li.group-item.yd-azword{margin-left: 60px;width: 200px;}
+.yd-clr>li.group-item.yd-azword h2{margin-bottom: 20px;font-weight:bold;}
+.yd-clr>li.group-item.yd-azword dd,.yd-clr>li.group-item.yd-azword dt{line-height: 22px;font-weight: normal;color: #333333;}
+.yd-clr>li.group-item.mobile{width: auto;margin-top: 40px;margin-right: 0;}
+.yd-clr>li.group-item.mobile .iphone{margin-right: 20px;}
+.yd-clr>li.group-item.mobile a p{font-size: 14px;color: #666666;line-height: 26px;}
+.yd-foot-inner .yd-footer{padding:5px 0;border-top: 1px solid #DDDDDD;border-bottom: 1px solid #DDDDDD;margin-top: 15px;}
+.yd-foot-inner .yd-footer > p{line-height: 24px;margin:0 10px 0 0;}
+.weixin-bottom {
+  background: rgba(0, 0, 0, 0) url("../img/top_wx.png") no-repeat scroll left center;
+}
+.yd-foot-inner .yd-footer ul li{float: left; height: 24px;line-height: 24px;color: #666666;}
+.yd-foot-inner .yd-footer ul li.separation{margin:0 8px;}
+.yd-foot-inner .yd-footer ul li a{color: #666666;}
+.yd-foot-inner .yd-footer ul li a:hover{color: #1c72c8;}
+.yd-end .yd-logo-bottom a{display: block;width: ;}
+.yd-end .pull-right{text-align: right;margin-top: 25px;}
+.yd-end .pull-right p{margin:0;color: #999;margin-right: -5px;margin-bottom: 5px;}
+.yd-end .pull-right p a{display: inline-block;margin:0 5px;color: #999999;}
+.yd-end .pull-right p.p1 a{margin-left: 15px;}
+.yd-footer ul{padding-left: 70px;}
+.yd-end .yd-logo{overflow: hidden;}
+.yd-end .yd-logo h1 a{background-position: -197px 0;height: 54px;overflow: hidden;padding-top: 54px;width: 227px;}

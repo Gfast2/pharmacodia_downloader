@@ -1,0 +1,199 @@
+/* intro -----------------------------------------------------------------*/
+.banner-sm {
+	height: 200px;
+	background: url(../img/banner_about.png) center;
+}
+.about-menu {
+	font-size: 16px;
+	height: 80px;
+	line-height: 80px;
+}
+.about-menu a,.about-menu span{
+	color:#666;
+}
+.about-menu .list-inline>li a.text {
+	text-align: center;
+	display: block;
+	color: #666666;
+}
+.about-menu .list-inline>li.active a.text {
+	color: #0078d8;
+}
+.about-menu .list-inline>li a:hover,.about-menu a:hover{
+	color: #0078d8!important;
+	text-decoration:none;
+}
+/**左边字体要求12px**/
+.about-menu .pull-left{font-size: 12px;}
+
+.section-gray {
+	background-color: #f5f5f5;
+	height: 168px;
+	margin-bottom: 4px;
+}
+.about-text {
+	width: 540px;
+	padding: 9px 23px;
+	line-height: 180%;
+	font-size: 13px;
+	font-family:"Microsoft Yahei",Arial;
+	
+}
+.gray-bg {
+min-height: 32px;
+height: auto;
+overflow: hidden;
+background-color: #f2f2f2;
+padding: 7px;
+padding-bottom: 0\9;
+}
+.over-services{
+	padding:20px 23px;
+}
+.about-text h4 {
+	font-size: 16px;
+	font-weight: bold;
+}
+.section-white {
+	height: 164px;
+	margin-bottom: 4px;
+}
+
+/* contact -----------------------------------------------------------------*/
+.contact-content {
+	width: 830px;
+	margin: 0 auto;
+}
+.contact-content ul li {
+	line-height: 250%;
+}
+.contact-content ul {
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+/* recruitment -----------------------------------------------------------------*/
+.person-table {
+	color: #737373;
+	border: 1px solid #cecece;
+}
+.person-table .gray-bg {
+	padding: 0 7px;
+	height: 33px;
+	line-height: 33px !important;
+}
+.person-table .gray-bg * {
+	padding-top: 0 !important;
+}
+.person-table .person-col1, .person-table .person-col2, .person-table .person-col3, .person-table .person-col4 {
+	float: left;
+	min-height: 40px;
+	height: auto;
+	overflow: hidden;
+	padding-top: 15px;
+	text-align: center;
+	width: 220px;
+}
+.person-table .person-col1 {
+	text-align: left;
+	padding-left: 80px;
+	width: 294px;
+}
+.person-img img {
+	float: left;
+}
+.person-img ul {
+	margin-bottom: 30px;
+	margin-top: 11px;
+	line-height: 25px;
+}
+.person-title-blue {
+	background-color: #f5f5f5;
+	height: 40px;
+	line-height: 40px;
+	padding: 0 60px;
+	margin: 50px 0 0 0;
+	display: inline-block;
+}
+.person-content {
+	margin: 20px 0 20px 80px;
+}
+.person-content-text {
+	line-height: 200%;
+}
+.person-content-text .f14 {
+	height: 40px;
+	margin: 20px 0 0 0;
+}
+/* question -----------------------------------------------------------------*/
+.center-content {
+	width: 920px;
+	margin: 0 auto;
+}
+.question p {
+	margin: 15px auto;
+	width: 890px;
+	line-height: 180%;
+	padding-bottom: 20px;
+}
+
+/* web -----------------------------------------------------------------*/
+.web {
+	line-height: 170%;
+}
+.web h5 {
+	font-size: 16px;
+}
+.web span {
+	font-size: 13px;
+}
+.web > div {
+	padding: 2px 0px;
+	font-size: 13px;
+	margin: 5px 0;
+}
+.web p {
+	padding: 2px 0px;
+	margin-bottom: 5px;
+	margin-top: 5px;
+	font-size: 13px;
+}
+.web > div strong {
+	font-size: 14px;
+}
+.web p.sub-text {
+	padding: 2px 20px;
+	margin-bottom: 5px;
+	margin-top: 5px;
+	font-size: 13px;
+}
+.web p.sub-text2 {
+	padding: 2px 20px;
+	margin-bottom: 5px;
+	margin-top: 5px;
+	font-size: 13px;
+}
+/* feedback -----------------------------------------------------------------*/
+.feedback-content {
+	width: 710px;
+	margin: 40px auto;
+}
+.feedback-content textarea {
+	width: 100%;
+	height: 240px;
+	margin-top:10px;
+}
+.feedback-content ul li {
+	line-height: 160%;
+}
+.feedback-content .gray-bg {
+	margin-top: 50px;
+	padding: 15px 10px;
+}
+.pull-left .crumb {
+    font-family: arial;
+    font-size: 14px;
+    font-style: normal;
+    margin-right:11px;
+    background:none!important;
+}

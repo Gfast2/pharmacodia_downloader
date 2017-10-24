@@ -1,0 +1,650 @@
+﻿﻿﻿$(function(){
+
+	//encodeUserName();
+	//搜索框固定
+	var offTop = $(".yd_search_out").offset().top;
+		$(window).scroll(function(){
+			if($(window).scrollTop()>offTop){
+				$(".yd_search_out").addClass("yd_search_fixed")
+			}else{
+				$(".yd_search_out").removeClass("yd_search_fixed")
+			}
+		})
+	
+
+	
+	/*侧边栏导航*/
+	$(".yd-content-left li").hover(function(){
+		$(this).addClass('subNav-hover');
+	},function(){
+		$(this).removeClass('subNav-hover');
+	});
+	
+	
+	/*文字变色*/
+	 setInterval(function () {
+	    var _time = 0;
+	    $(".yd-word-head>span").each(function () {
+	        setTimeout(function (obj) {
+	            var _this = $(obj);
+	            _this.css({ opacity: 0.2 }).animate({ opacity: 1 }, 300);
+	        }, _time, this);
+	        _time += 100;
+	    });
+	}, 4000);
+	
+	
+	
+
+	/*固定返回顶部等效果*/
+	$(".fixedtool a.a1").hover(function(){
+		$(this).children('span').hide();
+		$(this).children('em').show();
+	},function(){
+		$(this).children('span').show();
+		$(this).children('em').hide();
+	});
+	
+	$(".wxbox").mouseover(function(){
+		$(this).find('.big-ewm').stop().fadeIn('fast');
+	});
+	$(".wxbox").mouseout(function(event) {
+		$(this).find('.big-ewm').stop().fadeOut('fast');
+	});
+	/*返回顶部*/
+	$("#yd_GoTop").click(function(){
+		$('body,html').animate({
+	    scrollTop: 0
+	  }, 300);
+	});
+	//资讯鼠标悬停出现提示信息
+	
+	$('.NewList ul li a').hover(function(e){
+		$(this).append("<span class='tip none'></span>");
+		var top = e.pageY+22;
+		var left = e.pageX+12;
+		$(this).find('.tip').css({
+			'top' : top + 'px',
+			'left' : left + 'px'
+		})
+		$(this).find(".tip").removeClass('none');
+		$(this).find(".tip").fadeIn('slow');
+		if($(this).find(".tip").html()==''){
+			$(this).find(".tip").html($(this).text());
+		}
+	},function(){
+		$(this).find('.tip').remove();
+	});
+	$('.NewList ul li a').mousemove(function(e){
+		var top = e.pageY+22;
+		var left = e.pageX+12;
+		$('.tip').css({
+			'top' : top + 'px',
+			'left' : left + 'px'
+			});
+		});
+
+	/*搜索二维码*/
+	$(".erweima").hover(function(){
+		$(".erweima .big-ewm").animate({'opacity':'1'},300).show();
+	},function(){
+		$(".erweima .big-ewm").animate({'opacity':'0'},300).hide();
+	});
+	$(".erweima").mousemove(function(){
+		$(".erweima .big-ewm").animate({'opacity':'1'},300).show();
+	})
+	
+	
+	//初始化搜索按钮
+	SEARCH_TEXT.init();
+	//#############初始化 关键字信息###############start
+	//初始化药品关键字 GJCLX_YWGJC
+	initKeyWord('#keywordText','smifindSearchKeyWordsDrug');//药品
+    //初始化样品关键字 GJCLX_YPGJZ
+    initKeyWord('#keywordWord','smifindSearchKeyWordsSample');//样品
+    //#############初始化 关键字信息###############end
+    
+	/*table固定导航*/
+	/*搜索框顶部的切换*/
+	$('.tableChange>div').click(function(){
+		$(this).addClass('Heigs').siblings().removeClass('Heigs');
+		$('.yd-jgs').removeClass('none');
+		if($('.tableChange>div').eq(1).hasClass('Heigs')){
+			$('.yd-jgs').addClass('none');
+		}
+	})
+	
+	$('.tableChange').hover(function(){
+		if($(this).parents().hasClass('ydwrap-fixed')){
+			$(this).css('overflow','visible');
+		}
+	},function(){
+		$(this).css('overflow','hidden');
+	})
+	
+	 
+	/*底部banner效果*/
+	$(window).scroll(function(){
+		var top = document.documentElement.scrollTop || document.body.scrollTop;
+		var _obj = $(".footBanner");
+		var inputWidths=$('.ydwrap-fixed .search-bottom .InputBox input').width();
+		
+		/*if(_obj.data("loaded") == "true")
+		{
+			return;
+		}
+		_obj.data("loaded","true");*/
+		var $footBanner = $(".footBanner");
+		var BoxTop = 0;
+		if(0<$footBanner.length){
+			BoxTop = $(".footBanner").offset().top;
+		}
+		var Height = $(window).height();
+		var Bottom = $(".footBannerIn img.Pic1")
+		if(top > BoxTop - Height + 20){
+			
+				$(".footBannerIn img.Pic1").animate({'margin-bottom':0,'opacity':1},1000,function(){
+					$(".footBannerIn .Word img").animate({'margin-left':0,'opacity':1},500);
+					$(".footBannerIn .Word p").animate({'margin-left':0,'opacity':1},800,function(){
+						$(".footBannerIn .Btn a").addClass('active');
+					});
+				});
+			
+		};
+		if(top>130){
+			$(".fixedtool").fadeIn();
+		}else{
+			$(".fixedtool").fadeOut();
+		}
+		var BannerHeight=$('.Topbanner').height();
+		var navBarHeight = $('.navbars').height();
+		
+		if(top>BannerHeight){
+			$(".navbars").addClass('navbar-fixed')
+		}else{
+			$(".navbars").removeClass('navbar-fixed')
+			
+		}
+		
+		var bl__ = 30;
+		if(0>=BannerHeight){
+			bl__ = 0;
+		}
+		
+		if(top>BannerHeight + navBarHeight + bl__){
+			$(".header-normal").addClass('ydwrap-fixed').animate({'top':'30px'}, 450);
+			$('.search-hot').addClass('none');
+			$("#div_searchResult").css('width',inputWidths);
+			$("#div_searchResult").css('left','-46px');
+		}else {
+			$(".header-normal").removeClass('ydwrap-fixed').css({'top':'-68px'},350);
+			$('.search-hot').removeClass('none');
+			
+		};
+		
+	}).scroll();
+	//源代码贴过来的 智能联想
+	var _searchText = $("#searchTxt");
+	_searchText.attr("autocomplete","off");
+	var _searchType = 1;
+	
+	
+	//var _url = path+"/web/drug/queryThink";
+	var _url ="https://www.pharmacodia.com/web/drug/queryThink";
+	
+	if($("#smaples").hasClass('Heigs')){
+		_searchType = 1;
+		_url="https://www.pharmacodia.com/web/sample/queryThink";
+	}
+	
+	
+	
+	//新版首页 
+		$(".ydindex_search_type li").click(function(){
+			setTimeout(function(){
+				if($("#smaples").hasClass('Heigs')){
+			
+				_searchType = 3;
+				//_url="http://mall.pharmacodia.com/web/sample/queryThink";
+				_url="https://www.pharmacodia.com/web/sample/queryThink";
+			
+				}else if($("#data_drugs").hasClass('Heigs')){
+					
+					_searchType = 1;
+					_url="https://www.pharmacodia.com/web/drug/queryThink";
+					
+				}else if($("#report").hasClass('Heigs')){
+					
+					_searchType = 2;
+					_url = path+"/web/report/queryThink";
+					
+				}else if($("#news").hasClass('Heigs')){
+				
+					_searchType = 4;
+					var host=window.location.host;
+				
+					if(host=="www.pharmacodia.com"){
+						_url = "https://www.pharmacodia.com/yaodu-store/web/newinfo/queryThink";
+					}else{
+						_url = path+"/web/newinfo/queryThink";
+					}
+					
+					//准生产
+					//_url = path+"/web/newinfo/queryThink";
+					//线上
+					//_url = "https://news.pharmacodia.com/web/newinfo/queryThink";
+					
+				}
+				_searchText.keyup();
+				
+			},100);
+	});
+	
+	if(_searchText.length > 0){
+		
+		var inputWidth=$('.search-bottom .InputBox').width();
+		//新首页 联想
+		var inputWidth=$('#searchTxt').width();
+		
+		$(".ydindex_search_box").append("<div style='box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);position:absolute;max-height:300px;display:none;overflow-y:auto;background-color:white;margin-left: 47px;line-height:30px;z-index:999;left:'166px'; id='div_searchResult'></div>");
+		var _searchResult = $("#div_searchResult");
+		var $yd_search_wrap = $("#yd-search-wrap");
+		_searchResult.css('width',inputWidth);
+		
+	
+		
+		$('body').click(function(){
+			_searchResult.hide();
+		})
+	    $('.InputBox').click(function(){
+			return false;
+		})
+		
+		$(window).scroll(function(){
+			var top = 0;
+			var BannerHeight=$('.Topbanner').height();
+			var navBarHeight = $('.navbars').height();
+			var inputWidths=$('.ydwrap-fixed .search-bottom .InputBox input').width();
+			var divWidths = $('.ydwrap-fixed .search-bottom .InputBox ').width();
+			var buttonWidths=$('.ydwrap-fixed .tableChange div ').width();
+			if(top>BannerHeight + navBarHeight + 30){
+				if("en"==language){
+					$("#div_searchResult").css('width',inputWidths);
+				}else{
+					$("#div_searchResult").css('width',divWidths-buttonWidths-12);
+				}
+			
+				if("en" == language){
+					$("#div_searchResult").css('left','-46px');
+				}else{
+					$("#div_searchResult").css('left','-46px');
+				}
+			}else {
+				$("#div_searchResult").css('width',inputWidth);
+				
+				$("#div_searchResult").css('left','-46px');
+			};
+			
+		}).scroll();
+		_searchText.keyup(function(e){
+			var _keyCode = e.which || e.charCode || e.keyCode;
+			var _current = _searchResult.find(".current");
+			if(_keyCode == 40){	//向下走
+				if(_current.length == 0){
+					_searchResult.find("div:first").attr("class","current").siblings().removeAttr("class");
+					_searchText.val(_searchResult.find("div:first").text());
+				}else{
+					if(_current.next().length == 0)
+						return;
+					_current.next().attr("class","current").siblings().removeAttr("class");
+					_searchText.val(_current.next().html());
+				}
+				return;
+			}else if(_keyCode == 38){	//向上走
+				if(_current.length == 0){
+					_searchResult.find("div:last").attr("class","current").siblings().removeAttr("class");
+					_searchText.val(_searchResult.find("div:last").text());
+				}
+				else{
+					if(_current.prev().length == 0)
+						return;
+					_current.prev().attr("class","current").siblings().removeAttr("class");
+					_searchText.val(_current.prev().html());
+				}
+				return;
+			}
+			var _searchKey = $.trim(_searchText.val());
+			if("" == _searchKey){
+				_searchResult.html("");
+				_searchResult.empty().hide();
+				return;
+			}
+			
+			
+			var s_h = $("#searchTxt").outerHeight();
+			
+			
+			$("#div_searchResult").css({'top':s_h+2});
+			
+			$.ajax({
+						url:_url,
+						type : "post",
+						async : false,
+						data:{searchtxt:_searchKey,"labelId":"0"},
+						success:function(data){
+						
+					_searchResult.html("");
+					var _html = "";
+					for(var  i =0;i<data.length;i++){
+						_html+="<div style='cursor:pointer;padding-left:5px;'>"+data[i]+"</div>";
+					}
+					_searchResult.html(_html);
+					_searchResult.find("div").click(function(){
+						_searchText.val($(this).text());
+						if($("#smaples").hasClass('Heigs')){
+							var searchTxt = $("input.searchInput").val();
+							$("#searchFrm").submit();
+						
+						}if($("#drugs").hasClass('Heigs')){
+							var condition = $("#searchTxt").val();
+							$("#searchFrm").submit();
+						}
+						if($("#report").hasClass('Heigs')){
+							var condition = $("#searchTxt").val();
+							$("#searchFrm").submit();
+						}
+						if($("#news").hasClass('Heigs')){
+							var condition = $("#searchTxt").val().trim();
+							$("#searchFrm").submit();
+						}if($("#data_drugs").hasClass('Heigs')){
+							var condition = $("#searchTxt").val().trim();
+							$("#searchFrm").submit();
+						}
+						_searchResult.empty().hide();
+					if(_searchResult.find('div').length==0){
+						_searchResult.empty().hide();
+					}	
+					
+					});
+				
+					_searchResult.show();
+						},
+						error : function(){
+						 // alert(XMLHttpRequest.status);
+						  //alert(XMLHttpRequest.readyState);
+						 // alert(textStatus);
+						}
+					});
+			
+			
+	});
+}
+	
+});
+
+//中英文切换
+//中英文切换
+function changeLanage(language){
+	
+	  var id="";
+	 	$.ajax({
+			url:path+"/web/webSiteUser/changelanguage",
+			type:"post",
+		
+			async:false,	
+			error:function(es){
+			    alert('Error loading XML document');
+			},
+			success:function(data) {
+				  window.location.href =en_index;//+"?localStr=cn&time="+userId;
+			return true;
+				/**	
+				$.ajax({
+			        url: en_index+'/web/webSiteUser/loginInfo?id='+data,
+			        dataType: "jsonp",
+			        async:false,
+			        jsonp: "jsonpCallback",
+			        error:function(es){
+					    alert('Error loading json document');
+					},
+			        success: function (data) {
+			        	
+						
+			      	  window.location.href =en_index;	
+						
+			        }
+			    });
+			
+			**/
+			}});
+
+		//生成添加
+		 return false;
+
+	}
+
+//初始化关键词
+function initKeyWord(ele,url){
+	 var url = path+'/web/smiproductSearch/'+url;
+	
+		$.ajax({
+		     type: 'POST',
+		     url: url ,
+		    dataType:'json',
+		    success: function(data){
+	     		$(ele).html(fillKeyWords(data));
+		    },
+		    error: function(data){
+				
+		    	var message = "en" == "${language}" ? "search keywords error":"搜索关键词错误";
+		    	$(ele).html(message);
+		    	return;
+		    }
+		});
+}
+//查找关键词
+function fillKeyWords(data){
+  var innerHTML="";
+
+  for(var i=0;i<data.length;i++){   
+		if(data[i].queryValue){
+			if(i != data.length - 1){
+ 				innerHTML = innerHTML+ '<a href="javascript:SEARCH_TEXT.setKewWord(\''+data[i].queryValue+'\');">'+data[i].queryValue+'</a> | ';
+			//innerHTML = innerHTML+ '<a href="javascript:SEARCH_TEXT.setKewWord(\''+"t-614"+'\');">'+"t-614"+'</a> | ';
+ 			}else{
+ 				innerHTML = innerHTML+ '<a href="javascript:SEARCH_TEXT.setKewWord(\''+data[i].queryValue+'\');">'+data[i].queryValue+'</a>';
+				//innerHTML = innerHTML+ '<a href="javascript:SEARCH_TEXT.setKewWord(\''+"t-614"+'\');">'+"t-614"+'</a>';
+ 			}
+		}
+	} 
+
+	//innerHTML = innerHTML+ '<a href="javascript:SEARCH_TEXT.setKewWord(\''+"t-614"+'\');">'+data[i].queryValue+'</a> | ';
+  return innerHTML;
+}
+
+//搜索按钮
+var SEARCH_TEXT = {
+		init:function(){
+			SEARCH_TEXT.initEvents();
+		},
+		initEvents:function(){
+			$("#searchBtn").click(function(){
+				$("#searchFrm").submit();				
+			});
+			$("#searchFrm").submit(function(){
+				$text = $("#searchTxt");
+				var val = $text.val();
+				var fieldShowName = "en"==language?"KeyWord":"关键字";
+				var field = "en"==language?"text_en":"text";
+				
+				if($("#drugs").hasClass("Heigs")){
+					//ns=1 标记 文本框搜索,解决登录后不设置查询条件需要去上次搜索条件问题
+					 var url = path+"/web/drug/query";
+					 if(val && null!=val && ""!=val && ""!=$.trim(val) && null!=$.trim(val)){
+						 url = url +"?page=1";
+						 url = url +"&q.field="+encodeURIComponent(field); //搜索字段
+						 url = url +"&q.fieldShowName="+encodeURIComponent(fieldShowName); //搜索字段名称
+						 url = url +"&q.val="+encodeURIComponent(val); //搜索字段值
+						 url = url +"&q.valShowName="+encodeURIComponent(val); //搜索字段显示值			 
+					 }
+					
+					   //$("#searchFrm").attr("target","_blank");
+					 $("#searchFrm").attr("action",url);
+				}else if($("#smaples").hasClass("Heigs")){
+					 var searchTxt = $("#searchTxt").val();
+					 var url = "";
+					 if("" != searchTxt &&  ""!=$.trim(searchTxt) && null!=$.trim(searchTxt)){
+						/*
+						 if(searchTxt.indexOf("/") != -1){
+							 searchTxt = searchTxt.replace("/","&2f");
+						 }
+						 if(searchTxt.indexOf("-") != -1){
+							 searchTxt = searchTxt.replace("-","%");
+						 }
+						 */
+						//url = path+"/web/sample/q_1_"+encodeURIComponent(searchTxt)+"_0_0_1.html";
+						//url ="http://mall.pharmacodia.com/web/sample/search?labelId=&keyWord="+encodeURIComponent(searchTxt);
+						url = "https://mall.pharmacodia.com/pharmacodia_mall/search?condition="+encodeURIComponent(searchTxt);
+					 }else{
+						 url = "https://mall.pharmacodia.com/";//path+"/web/sample/q_0_0_0_0_1.html";
+					 }
+					 //$("#searchFrm").attr("target","_blank");
+					 $("#searchFrm").attr("action",url);
+				}else if($("#report").hasClass("Heigs")){
+					$text = $("#searchTxt");
+					var val = $text.val();
+					var fieldShowName = "en"==language?"KeyWord":"关键字";
+					var field = "en"==language?"text_en":"text";
+					var url = path+"/web/report/query";
+			
+					if(val && null!=val && ""!=val && ""!=$.trim(val) && null!=$.trim(val)){
+						 url = url +"?page=1";
+						 url = url +"&q.field="+encodeURIComponent(field); //搜索字段
+						 url = url +"&q.fieldShowName="+encodeURIComponent(fieldShowName); //搜索字段名称
+						 url = url +"&q.val="+encodeURIComponent(val); //搜索字段值
+						 url = url +"&q.valShowName="+encodeURIComponent(val); //搜索字段显示值			 
+					 }
+					
+					  //$("#searchFrm").attr("target","_blank");
+					 $("#searchFrm").attr("action",url);
+				}else if($("#news").hasClass("Heigs")){
+					$text = $("#searchTxt");
+					var val = $text.val().trim();
+					var fieldShowName = "en"==language?"KeyWord":"关键字";
+					var field = "en"==language?"text_en":"text";
+					var host=window.location.host;
+					var url = "https://news.pharmacodia.com/web/newinfo/searchInfo";
+					if(host=="www.pharmacodia.com"){
+						url = "https://news.pharmacodia.com/web/newinfo/searchInfo";
+					}else{
+					url = path+"/web/newinfo/searchInfo";
+						
+					}
+					
+			
+					if(val && null!=val && ""!=val && ""!=$.trim(val) && null!=$.trim(val)){
+						 url = url +"?page=1";
+						 url = url +"&q.field="+encodeURIComponent(field); //搜索字段
+						 url = url +"&q.fieldShowName="+encodeURIComponent(fieldShowName); //搜索字段名称
+						 url = url +"&q.val="+encodeURIComponent(val); //搜索字段值
+						 url = url +"&q.valShowName="+encodeURIComponent(val); //搜索字段显示值			 
+					 }else{
+						 url = url +"?page=1";
+						 url = url +"&q.field="+encodeURIComponent(field); //搜索字段
+						 url = url +"&q.fieldShowName="+encodeURIComponent(fieldShowName); //搜索字段名称
+						 url = url +"&q.val="+encodeURIComponent(val); //搜索字段值
+						 url = url +"&q.valShowName="+encodeURIComponent(val); //搜索字段显示值
+					 }
+					  //$("#searchFrm").attr("target","_blank");
+					 $("#searchFrm").attr("action",url);
+				}else if($("#data_drugs").hasClass("Heigs")){
+					var serch_input=$("#searchTxt").val();
+					var url = "http://data.pharmacodia.com/web/homePage/index?ns=1&text.val=";
+					if(serch_input && null!=serch_input && ""!=serch_input && ""!=$.trim(serch_input) && null!=$.trim(serch_input)){
+						url = url+serch_input;
+					}else{
+						url = "http://data.pharmacodia.com/web/homePage/index?ns=1&text.val="
+					}
+					$("#searchFrm").attr("action",url);
+				}
+				
+				//遮罩效果显示
+				 $("#background,#progressBar").show();
+				 /**********cnzz关键搜索词统计**********/
+				 var val = $('#searchTxt').val();
+				 var selectDrug = $('#data_drugs');
+			     var selectreport = $('#report');
+				 var selectnews = $('#news');
+				 if(selectDrug && selectDrug.hasClass('Heigs')){
+					 if(val == ""){
+						 val = "所有药物";
+					 }
+				     _czc.push(['_trackEvent','关键词（药物）搜索统计','点击事件',val,'','']);
+				 }else if(selectreport && selectreport.hasClass('Heigs')){
+					 if(val == ""){
+						 val = "报告";
+					 }
+				     _czc.push(['_trackEvent','关键词（报告）搜索统计','点击事件',val,'','']);
+				 }else if(selectnews && selectnews.hasClass('Heigs')){
+					 if(val == ""){
+						 val = "资讯";
+					 }
+				     _czc.push(['_trackEvent','关键词（资讯）搜索统计','点击事件',val,'','']);
+				 }{
+					 if(val == ""){
+						 val = "所有样品";
+					 }
+				     _czc.push(['_trackEvent','关键词（样品）搜索统计','点击事件',val,'','']);
+				 }
+//			     console.info(val);
+			     /**********cnzz关键词搜索统计**********/
+			});
+			
+		},
+		setKewWord:function(text){
+				$("#searchTxt").val(text);
+			$("#searchFrm").attr("target","_blank");
+			$("#searchFrm").submit();
+			$("#searchFrm").attr("target","_self");
+			//$("#searchFrm").submit();
+		}
+		
+};
+
+//格式化用户名
+function encodeUserName(){
+	var name = $(".UserName").text();
+	if(typeof(name) != "undefined" && null != name && name){
+		/*if(name.length > 11){
+		if(name.length >= 10){
+			$(".UserName").attr("title",name);
+			name = name.substring(0,10)+"...";
+		}*/
+		$(".UserName").attr("title",name);
+		if(name.length>11){
+			var name1=name.substring(0,11)+'...';
+			$(".UserName").text(name1);
+		}
+		
+	}
+}
+
+
+//结构式搜索
+	
+function searchjs(){
+	var url = path+"/web/drug/marvin";
+	
+	//window.location.href =url;
+	//window.open(URL,name,features,replace)
+	window.open(url);
+}
+
+function setSearchNewsName(obj){
+	$("#searchTxt").val(obj.text);
+}
+
+
+
+
+

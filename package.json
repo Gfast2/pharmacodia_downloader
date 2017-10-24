@@ -1,0 +1,18 @@
+{
+  "name": "qiaofeng_api_getter",
+  "version": "1.0.0",
+  "description": "Bla",
+  "main": "Bla",
+  "dependencies": {
+    "readline": "^1.3.0",
+    "xml2js": "^0.4.19",
+    "xmlhttprequest": "^1.8.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

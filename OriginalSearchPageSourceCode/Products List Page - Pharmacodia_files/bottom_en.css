@@ -1,0 +1,55 @@
+.foot {
+  padding-top: 95px;
+}
+
+.yd-title {
+  background: #f0f0f0 none repeat scroll 0 0;
+  height: 32px;
+  line-height: 32px;
+}
+
+.offset-t30 {
+  margin-top: 30px !important;
+}
+
+.nav1 li {
+  color: #bbbbbb;
+  display: inline-block;
+  list-style: outside none none;
+}
+.nav1 li a {
+  color: #75839e;
+  padding: 0 18px;
+}
+/**友情链接**/
+.link-f {
+  margin-top: 10px;
+  padding: 0 100px 0 185px;
+}
+.link-f p {
+  width: 607px;
+}
+
+.link-f p:first-child {
+  color: #5c5a5b;
+  margin-top: 2px;
+  text-align: right;
+  width: 99px;
+}
+.link-f a {
+  color: #5c5c5c;
+  display: inline-block;
+  line-height: 20px;
+  padding: 0 13px;
+}
+
+/**公司声明**/
+.ender {
+  color: #a3a3a3;
+}
+.ender a {
+  color: #a3a3a3;
+  cursor: pointer !important;
+  display: inline-block;
+  padding: 0 3px;
+}
